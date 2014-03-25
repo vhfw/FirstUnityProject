@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 440bd8bd15df62649a8460f136ef1b13
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - lightClick: {instanceID: 0}
+  - flashLight: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
