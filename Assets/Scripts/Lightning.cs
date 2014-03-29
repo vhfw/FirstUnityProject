@@ -57,7 +57,7 @@ public class Lightning : MonoBehaviour
 	
 	void SoundFX()
 	{
-		if(brightness >= thunderThreshold) 
+		if(thunderChoice >= thunderThreshold) 
 			audio.PlayOneShot(loudThunder[Random.Range(0, loudThunder.Length)]);
 		else
 			audio.PlayOneShot(quietThunder[Random.Range(0, quietThunder.Length)]);
