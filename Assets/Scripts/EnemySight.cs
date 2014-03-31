@@ -5,6 +5,7 @@ public class EnemySight : MonoBehaviour
 {	
 	public GameObject player;
 	public float chasingThreshold;
+	public float damage;
 
 	private NavMeshAgent nav;
 	private SphereCollider col;
@@ -26,14 +27,15 @@ public class EnemySight : MonoBehaviour
 	{
 		if(playerInSight) 
 		{
-
-			Debug.Log (Vector3.Distance (player.transform.position, transform.position));
+			nav.SetDestination(player.transform.position);
+			//Debug.Log (Vector3.Distance (player.transform.position, transform.position));
 			if (Vector3.Distance (player.transform.position, transform.position) > chasingThreshold) 
 			{
-				nav.SetDestination (resetPosition);
 				playerInSight = false;
 			}
 		}
+		else
+			nav.SetDestination (resetPosition);
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -41,14 +43,21 @@ public class EnemySight : MonoBehaviour
 		if (other.gameObject == player) 
 		{
 			if (playerHealth.health > 0f)
-			{
-				nav.SetDestination(other.transform.position);
 				playerInSight = true;
-			}
 			else
 				playerInSight = false;
 		}
 
+	}
+
+	void OnCollisionEnter(Collision other)
+	{
+
+		if(other.gameObject == player)
+		{
+			playerHealth.TakeDamage(damage);
+			Debug.Log (playerHealth);
+		}
 	}
 	
 }

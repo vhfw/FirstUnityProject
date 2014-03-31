@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
 		}
 	}
 
-	void TakeDamage(float amount)
+	public void TakeDamage(float amount)
 	{
 		health -= amount;
 	}
